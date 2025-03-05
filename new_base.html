@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Flight Operations</title>
+    <!-- Google Fonts: Chakra Petch -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Chakra+Petch&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Custom CSS for new UI -->
+    <link rel="stylesheet" href="{% static 'dashboard/new-styles.css' %}" />
+  </head>
+  <body class="dashboard-body">
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+      <div class="navbar-left">
+        <!-- Logo -->
+        <img src="{% static 'dashboard/logo.png' %}" alt="Logo" class="logo" />
+        <!-- Title -->
+        <h1 class="dashboard-title">FLIGHT OPERATIONS</h1>
+      </div>
+      <!-- Clock (updated via JS or template) -->
+      <div class="clock" id="clock">08:40:32AM</div>
+    </nav>
+
+    <!-- Main Dashboard Container -->
+    <div class="dashboard-container">
+      <!-- FLIGHT COUNT Card -->
+      <div class="card flight-count-card">
+        <h2>FLIGHT COUNT</h2>
+        <span id="flight-count-number">0</span>
+      </div>
+
+      <!-- DELIVERIES Card -->
+      <div class="card deliveries-card">
+        <h2>DELIVERIES</h2>
+        <span id="deliveries-count-number">0</span>
+      </div>
+
+      <!-- OUTBOUND Card -->
+      <div class="card outbound-card">
+        <h2>OUTBOUND</h2>
+        <span id="outbound-count-number">0</span>
+      </div>
+
+      <!-- INBOUND Card -->
+      <div class="card inbound-card">
+        <h2>INBOUND</h2>
+        <span id="inbound-count-number">0</span>
+      </div>
+
+      <!-- AVAILABLE ZIPS Card -->
+      <div class="card available-zips-card">
+        <h2>AVAILABLE ZIPS</h2>
+        <span id="available-zips-number">0</span>
+      </div>
+
+      <!-- ZIPS RECOVERING Card -->
+      <div class="card zips-recovering-card">
+        <h2>ZIPS RECOVERING</h2>
+        <span id="zips-recovering-number">0</span>
+      </div>
+
+      <!-- 3-DOT Card -->
+      <div class="card dot3-card">
+        <h2>3-DOT</h2>
+        <span id="dot3-number">0</span>
+      </div>
+
+      <!-- 2-DOT Card -->
+      <div class="card dot2-card">
+        <h2>2-DOT</h2>
+        <span id="dot2-number">0</span>
+      </div>
+
+      <!-- 1-DOT Card -->
+      <div class="card dot1-card">
+        <h2>1-DOT</h2>
+        <span id="dot1-number">0</span>
+      </div>
+    </div>
+
+    <!-- Optional: JavaScript to update clock/data in real-time -->
+    <script>
+      // Example: Simple clock update
+      setInterval(() => {
+        const now = new Date();
+        // 12-hour format with AM/PM
+        document.getElementById('clock').textContent = now.toLocaleTimeString([], {
+          hour: '2-digit',
+          minute: '2-digit',
+          second: '2-digit'
+        });
+      }, 1000);
+    </script>
+  </body>
+</html>
