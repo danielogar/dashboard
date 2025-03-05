@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <title>Configuration Settings</title>
+  </head>
+  <body class="bg-gray-100 p-6">
+    <div class="max-w-3xl mx-auto bg-white shadow-md rounded p-6">
+      <h1 class="text-2xl font-bold mb-4">Configuration Settings</h1>
+      
+      <form method="POST" class="space-y-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+          Save Settings
+        </button>
+      </form>
+      
+      <hr class="my-6">
+      
+      <h2 class="text-xl font-semibold mb-2">Current Settings</h2>
+      <ul>
+        {% for config in configs %}
+          <li class="mb-1">
+            <strong>{{ config.name }}:</strong> {{ config.value }}
+          </li>
+        {% empty %}
+          <li>No configuration settings found.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>
